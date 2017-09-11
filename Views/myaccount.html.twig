@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<div id="container" class="clear">
+  {% if updated == true %}
+    <p class='success'>Your account have successfully been updated</p>
+  {% endif %}
+  {% if deleted == true %}
+    <p class='success'>Your account have been deleted, good bye !</p>
+    <script>
+      redirect({{directory}});
+    </script>
+  {% endif %}
+  {% if error %}
+    <p class='error'>{{error|raw}}</p>
+  {% endif %}
+  <form id="edit_delete_user_form" method="POST" action="myaccount" >
+    <table>
+      <tr>
+        <td class="register_user_td">
+          <label for="name">Username :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="text" id="username" name="username" size="25"
+          value="{{username}}"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="email">Email :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="email" id="email" name="email" size="25" 
+          value="{{email}}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="password">New password :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="password" id="password" name="password" size="25" 
+          value="{{password}}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="password_confirmation">Password confirmation :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="password" id="password_confirmation"
+          name="password_confirmation" size="25" />
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+        </td>
+        <td class="register_user_td">
+          <input id="button_edit" type="submit" id="user_edit" name="edit" value="Edit infos" />
+          <input id="button_delete" type="submit" id="user_delete" name="delete" value="Delete account"
+            onclick="return confirm('Are you sure you want to delete your account ?');" />
+        </td>
+      </tr>
+    </table>
+
+
+
+    
+  </form>
+</div>
+{% endblock %}

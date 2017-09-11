@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+{% block content %}
+
+<table class="sticky-header">
+  <col width="2%">
+  <col width="22%">
+  <col width="22">
+  <col width="10%">
+  <col width="10%">
+  <col width="8%">
+  <col width="8%">
+  <col width="4%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Statut</th>
+            <th>Rôles</th>
+            <th>Member since</th>
+            <th>Edition date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+</table>
+<table class="sticky-header">
+  <col width="2%">
+  <col width="22%">
+  <col width="22">
+  <col width="10%">
+  <col width="10%">
+  <col width="8%">
+  <col width="8%">
+<col width="4%">
+{% for user in users %}
+    <tr class="{{ cycle(['odd', 'even'], loop.index) }} line_{{ user.id}}">
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.statut?"Inactif":"Actif"}}</td>
+        <td>{{user.group == 1 ? "Member": user.group == 2 ? "Writter":"Administrator"}}</td>
+        <td>{{user.creation_date}}</td>
+        <td>{{user.edition_date}}</td>
+        <td><a href="admin/user/{{user.id}}">Edit</a></td>
+    </tr>
+{% endfor %}
+</table>
+<p id='add_user'>
+    <a href="admin/useradd/">Add new user</a>
+</p>
+</div>
+{% endblock %}

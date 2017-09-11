@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteBase /PHP_Rush_MVC/
+RewriteRule ^$ Webroot/ [L] ˆ
+RewriteRule (.*) Webroot/$1 [L]

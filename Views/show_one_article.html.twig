@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<div class="menu_display">
+<h2><a href="/PHP_Rush_MVC/article/all">ALL ARTICLES</a></h2>
+<h2><a href="/PHP_Rush_MVC/article/articleedit/{{articles.0.id}}">UPDATE THIS ARTICLE</a></h2>
+<h2><a href="/PHP_Rush_MVC/article/articledelete/{{articles.0.id}}">DELETE THIS ARTICLE</a></h2>
+</div>
+<div id="display_article">
+<h2 class="article_title">{{articles.0.title}}</h2>
+<p class="article_content">{{articles.0.content}}</p>
+</div>
+<p><a id="comment" href="/PHP_Rush_MVC/article/addcomment/{{articles.0.id}}">Write a comment</a></p>
+<div class="article_comment">
+  {% for comment in articles.1 %}
+  <p class="display_comment">{{comment.content}}</p>
+  {% endfor %}
+{% endblock %}

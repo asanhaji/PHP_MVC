@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<div id="display_article">
+<h2 class="article_title">{{article_title}}</h2>
+<p class="article_content">{{article_content}}</p>
+</div>
+<form id="add_article_form" action="/PHP_Rush_MVC/article/addcomment/{{article_id}}" method="POST">
+  <label for="content">Content :</label>
+  <textarea id="art_content" name="art_comment" rows="10" cols="80" required></textarea>
+  <input id="button" type="submit" value="Submit" />
+</form>
+{% endblock %}

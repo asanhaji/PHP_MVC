@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+{% block content %}
+
+<p><a href="/PHP_Rush_MVC/article/articleadd">Create</a></p>
+
+<div id="display_articles">
+{% for article in articles %}
+<div class="div_articles">
+<h2 class="articles_title"><a href="/PHP_Rush_MVC/article/articleid/{{article.id}}">{{article.title}}</a></h2>
+<p class="articles_content">{{article.content}}</p>
+<p><a href="/PHP_Rush_MVC/article/articleid/{{article.id}}">READ MORE</a></p>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

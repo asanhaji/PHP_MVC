@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>LaurAdel</title>
+<meta charset="iso-8859-1">
+<script src={{jquery}}></script>
+<script src={{articles_js}}></script>
+<script src={{forms_js}}></script>
+<link rel="stylesheet" href={{file_css}} type="text/css">
+</head>
+<body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="/PHP_Rush_MVC/article/all">LaurAdel</a></h1>
+      <h2>Everyday's News</h2>
+    </div>
+      <nav class="user-nav">
+        <ul>
+        {% if is_logged == true %}
+          <li class="user-nav" ><a href='{{directory}}logout'>Logout</a></li>
+          <li > | </li>
+          <li class="user-nav{{ currentPage == 'myaccount'? ' select'}}" ><a href='{{directory}}myaccount'>My account</a></li>
+        {% else %}
+          <li class="user-nav{{ currentPage == 'register'? ' select'}}" ><a href='{{directory}}register'>Register</a></li>
+          <li > | </li>
+          <li class="user-nav{{ currentPage == 'login'? ' select'}}" ><a href='{{directory}}login'>Login</a></li>
+        {% endif %}
+        {% if is_admin == true %}
+          <li> | </li>
+          <li class="user-nav{{ currentPage == 'admin'? ' select'}}" ><a href='{{directory}}admin'>Admin</a></li>
+        {% endif %}
+        </ul>
+      </nav>
+  </header>
+</div>
+<div class="wrapper row2">
+{% block content %}
+{% endblock %}
+</div>
+<div class="wrapper row3">
+  <footer id="footer" class="clear">
+    <p class="fl_left">Copyright &copy; 2017 - All Rights Reserved to Adel and Laura</p>
+    <p class="fl_right"><a href="#">LaurAdel</a></p>
+  </footer>
+</div>
+</body>
+</html>

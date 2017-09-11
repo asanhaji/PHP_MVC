@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+{% block content %}
+{% if loaderror != true %}
+    {% if is_admin == true or is_writer == true %}
+        <h2 class="dis"><a href="/PHP_Rush_MVC/article/articleadd">CREATE AN ARTICLE</a></h2>
+    {% endif %}
+    <div id="display_articles">
+    {% for article in articles %}
+        <div class="div_articles">
+        <h2 class="articles_title"><a href="/PHP_Rush_MVC/article/articleid/{{article.id}}">{{article.title}}</a></h2>
+        <p class="articles_content">{{article.content}}</p>
+        <p><a href="/PHP_Rush_MVC/article/articleid/{{article.id}}">READ MORE</a></p>
+        </div>
+    {% endfor %}
+    </div>
+    {% else %}
+        <img alt="404 Not Found" class="bordered loaderror" src="{{directory}}Webroot/Img/error-404.png">
+{% endif %}
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<div id="container" class="clear">
+  {% if registered == true %}
+    <p class='success'>you have successfully registered</p>
+    <script>
+      redirect({{directory}});
+    </script>
+  {% endif %}
+  {% if error %}
+    <p class='error'>{{error|raw}}</p>
+  {% endif %}
+  <form id="register_user_form" action="register" method="POST">
+  <fieldset {{ registered == 'true'? 'disabled' : null }}>
+    <table>
+      <tr>
+        <td class="register_user_td">
+          <label for="name">Username :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="text" id="username" name="username" size="25"
+          value="{{username}}"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="email">Email :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="email" id="email" name="email" size="25" 
+          value="{{email}}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="password">Password :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="password" id="password" name="password" size="25" 
+          value="{{password}}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="password_confirmation">Password confirmation :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="password" id="password_confirmation"
+          name="password_confirmation" size="25" />
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+        </td>
+        <td class="register_user_td">
+          <input id="button" type="submit" value="Submit" />
+        </td>
+        
+      </tr>
+    </table>
+    </fieldset>
+  </form>
+</div>
+{% endblock %}

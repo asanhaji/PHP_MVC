@@ -1,0 +1,84 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<div id="container" class="clear">
+  {% if created == true %}
+    <p class='success'>Account have successfully been created</p>
+  {% endif %}
+  {% if error %}
+    <p class='error'>{{error|raw}}</p>
+  {% endif %}
+
+  <form id="edit_delete_user_form" method="POST" action="{{directory}}admin/useradd/" >
+  <fieldset {{deleted == true?'disabled'}}>
+    <table>
+      <tr>
+        <td class="register_user_td">
+          <label for="name">Username :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="text" id="username" name="username" size="25"
+          value="{{username}}"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="email">Email :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="email" id="email" name="email" size="25" 
+          value="{{email}}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="password">New password :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="password" id="password" name="password" size="25" 
+          value="{{password}}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="password_confirmation">Password confirmation :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="password" id="password_confirmation"
+          name="password_confirmation" size="25" />
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="group">Member :</label><br />
+          <label for="group">Writer :</label><br />
+          <label for="group">Administrator :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="radio" name="group" value="1" {{group is not defined or group == '1'?'checked'}}><br />
+          <input type="radio" name="group" value="2" {{group == '2'?'checked'}}><br />
+          <input type="radio" name="group" value="3" {{group == '3'?'checked'}}>
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="status">Active :</label><br />
+          <label for="status">Blocked :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="radio" name="status" value="1" {{status is not defined or status == '1'?'checked'}}><br />
+          <input type="radio" name="status" value="0" {{status == '0'?'checked'}}>
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+        </td>
+        <td class="register_user_td">
+          <input id="button_add" type="submit" id="user_add" name="add" value="Create user" />
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+  </form>
+</div>
+{% endblock %}

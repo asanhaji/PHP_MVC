@@ -1,0 +1,12 @@
+{
+    "name": "rush_mvc/composer",
+    "type": "yes",
+    "require": {
+        "michelf/php-markdown": "^1.7"
+    },
+    "autoload":{
+        "psr-4": {
+            "Config\\": "Config/"
+        }
+    }
+}

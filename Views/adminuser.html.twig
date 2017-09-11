@@ -1,0 +1,96 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<div id="container" class="clear">
+  {% if updated == true %}
+    <p class='success'>Account have successfully been updated</p>
+  {% endif %}
+  {% if deleted == true %}
+    <p class='success'>Account have successfully been deleted</p>
+    <script>
+      //redirect({{directory}});
+    </script>
+  {% endif %}
+  {% if error %}
+    <p class='error'>{{error|raw}}</p>
+  {% endif %}
+
+  <form id="edit_delete_user_form" method="POST" action="{{directory}}admin/user/{{user.id}}" >
+  <fieldset {{deleted == true?'disabled'}}>
+    <table>
+      <tr>
+        <td class="register_user_td">
+          <label for="name">Username :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="text" id="username" name="username" size="25"
+          value="{{user.username}}"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="email">Email :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="email" id="email" name="email" size="25" 
+          value="{{user.email}}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="password">New password :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="password" id="password" name="password" size="25" 
+          value="{{password}}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="password_confirmation">Password confirmation :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="password" id="password_confirmation"
+          name="password_confirmation" size="25" />
+        </td>
+      </tr>
+      {% if user.id != session_id %}
+      <tr>
+        <td class="register_user_td">
+          <label for="group">Member :</label><br />
+          <label for="group">Writer :</label><br />
+          <label for="group">Administrator :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="radio" name="group" value="1" {{user.group == 1?'checked'}}><br />
+          <input type="radio" name="group" value="2" {{user.group == 2?'checked'}}><br />
+          <input type="radio" name="group" value="3" {{user.group == 3?'checked'}}>
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="status">Active :</label><br />
+          <label for="status">Blocked :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="radio" name="status" value="1" {{user.status == 1?'checked'}}><br />
+          <input type="radio" name="status" value="0" {{user.status == 0?'checked'}}>
+        </td>
+      </tr>
+      {% endif %}
+      <tr>
+        <td class="register_user_td">
+        </td>
+        <td class="register_user_td">
+          <input id="button_edit" type="submit" id="user_edit" name="edit" value="Edit infos" />
+          {% if user.id != session_id %}
+          <input id="button_delete" type="submit" id="user_delete" name="delete" value="Delete account"
+            onclick="return confirm('Are you sure you want to delete your account ?');" />
+          {% endif %}
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+  </form>
+</div>
+{% endblock %}

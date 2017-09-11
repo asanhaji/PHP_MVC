@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<div id="container" class="clear">
+  {% if registered == true %}
+    <p class='success'>Welcome {{username}}, you have successfully logged</p>
+    <script>
+      redirect({{directory}});
+    </script>
+  {% endif %}
+  {% if error %}
+    <p class='error'>{{error|raw}}</p>
+  {% endif %}
+  <form action="login" method="POST" id="login_user_form" >
+    <fieldset {{ registered == 'true'? 'disabled' : null }}>
+    <table>
+      <tr>
+        <td class="register_user_td">
+          <label for="email">Email :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="text" id="email" name="email" size="25" value="{{email}}" />
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          <label for="password">Password :</label>
+        </td>
+        <td class="register_user_td">
+          <input type="password" id="password" name="password" size="25" />
+        </td>
+      </tr>
+      <tr>
+        <td class="register_user_td">
+          
+        </td>
+        <td class="register_user_td">
+          <input id="button" type="submit" value="Submit" />
+        </td>
+      </tr>
+    </table>
+    
+    </fieldset>
+  </form>
+</div>
+{% endblock %}
